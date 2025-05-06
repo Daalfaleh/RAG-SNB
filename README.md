@@ -1,1 +1,1 @@
-# RAG-SNB
+# rag-tutorial-v2
