@@ -1,5 +1,8 @@
 pypdf
 langchain
-chromadb # Vector storage
+langchain-community
+chromadb
 pytest
 boto3
+Flask
+Flask-WTF
