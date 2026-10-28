@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-    <title>Chatbot</title>
+    <title>RAG-SNB Chatbot</title>\n    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         @media (max-width: 768px) {
             .chat-container {
@@ -206,7 +206,7 @@
         const chatLog = document.getElementById('chat-log');
         const userInput = document.getElementById('user-input');
         const sendButton = document.getElementById('send-button');
-        const typingIndicator = document.querySelector('.typing-indicator');
+        const typingIndicator = document.querySelector('.typing-indicator');\n        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
         function addMessage(sender, message, isUser = false) {
              const messageElement = document.createElement('div');
@@ -236,11 +236,11 @@ function showTypingIndicator() {
         fetch('/query', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json',\n                'X-CSRFToken': csrfToken,
             },
             body: JSON.stringify({query: message}),
         })
-        .then(response => response.json())
+        .then(response => {\n            if (response.status === 401) {\n                window.location.href = '/';\n                throw new Error('Authentication required');\n            }\n            if (!response.ok) {\n                throw new Error('Request failed');\n            }\n            return response.json();\n        })
         .then(data => {
             hideTypingIndicator();
             addMessage('Chatbot', data.response);
