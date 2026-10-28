@@ -247,6 +247,12 @@ function showTypingIndicator() {
             if (data.sources && data.sources.length > 0) {
                 addMessage('Sources', data.sources.join(', '));
             }
+        })
+        .catch(error => {
+            hideTypingIndicator();
+            if (error.message !== 'Authentication required') {
+                addMessage('System', 'Unable to process the request. Please try again.');
+            }
         });
         userInput.value = '';
     }
