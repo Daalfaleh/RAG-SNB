@@ -26,9 +26,11 @@ $env:ADMIN_PASSWORD_HASH = "generated-password-hash"
 $env:SESSION_COOKIE_SECURE = "false"
 ```
 
-Use `SESSION_COOKIE_SECURE=true` when served over HTTPS. The credentials previously committed to this repository must not be reused.
+Use `SESSION_COOKIE_SECURE=true` when served over HTTPS.
 
 ## Index documents
+
+This repository does not include any documents. Add your own PDFs to `data/`.
 
 Place PDFs in `data/`, then run `python populate_database.py`. Use `--reset` only when intentionally rebuilding Chroma.
 

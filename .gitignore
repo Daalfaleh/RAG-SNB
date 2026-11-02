@@ -1,1 +1,9 @@
-.env\n.venv/\n__pycache__/\n*.py[cod]\nchat_log.txt\nChroma/\nchroma/\n
+.env
+.venv/
+__pycache__/
+*.pyc
+*.py[cod]
+chroma/
+Chroma/
+data/*.pdf
+chat_log.txt
